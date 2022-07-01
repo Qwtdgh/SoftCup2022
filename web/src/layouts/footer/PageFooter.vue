@@ -1,12 +1,12 @@
 <template>
   <div class="footer">
     <div class="links">
-      <a target="_blank" :key="index" :href="item.link ? item.link : 'javascript: void(0)'" v-for="(item, index) in linkList">
-        <a-icon v-if="item.icon" :type="item.icon"/>{{item.name}}
+      <a target="_blank" :key="index" href='https://github.com/Qwtdgh/SoftCup2022' v-for="(item, index) in linkLists">
+        <a-icon v-if="item.icon" :type='item.icon'/>{{item.name}}
       </a>
     </div>
     <div class="copyright">
-      Copyright<a-icon type="copyright" />{{copyright}}
+      Copyright<a-icon type="copyright" />智能创作全都队
     </div>
   </div>
 </template>
@@ -14,7 +14,22 @@
 <script>
 export default {
   name: 'PageFooter',
-  props: ['copyright', 'linkList']
+  props: ['copyright', 'linkList'],
+  data(){
+    const linkLists = [
+      {
+        icon: 'github',
+        name: ""
+      },
+      {
+        icon: '',
+        name: "关于我们"
+      }
+    ]
+    return {
+      linkLists,
+    }
+  }
 }
 </script>
 

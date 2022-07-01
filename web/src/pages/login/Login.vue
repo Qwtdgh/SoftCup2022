@@ -3,9 +3,9 @@
     <div class="top">
       <div class="header">
         <img alt="logo" class="logo" src="@/assets/img/logo.png" />
-        <span class="title">{{systemName}}</span>
+        <span class="title">智能创作全都队</span>
       </div>
-      <div class="desc">Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+      <div class="desc">智能创作全都队 权威准确地智能创作平台</div>
     </div>
     <div class="login">
       <a-form @submit="onSubmit" :form="form">
@@ -16,7 +16,7 @@
               <a-input
                 autocomplete="autocomplete"
                 size="large"
-                placeholder="admin"
+                placeholder="请输入用户名"
                 v-decorator="['name', {rules: [{ required: true, message: '请输入账户名', whitespace: true}]}]"
               >
                 <a-icon slot="prefix" type="user" />
@@ -25,7 +25,7 @@
             <a-form-item>
               <a-input
                 size="large"
-                placeholder="888888"
+                placeholder="请输入密码"
                 autocomplete="autocomplete"
                 type="password"
                 v-decorator="['password', {rules: [{ required: true, message: '请输入密码', whitespace: true}]}]"
@@ -103,6 +103,7 @@ import {login, getRoutesConfig} from '@/services/user'
 import {setAuthorization} from '@/utils/request'
 import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
+// import Global from "../../Global"
 
 export default {
   name: 'Login',
@@ -137,6 +138,7 @@ export default {
       this.logging = false
       const loginRes = res.data
       // if(loginRes.success){
+      // Global.userId = loginRes.userId
       //   getRoutesConfig().then(result => {
       //     const routesConfig = result.data.data
       //     loadRoutes(routesConfig)

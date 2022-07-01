@@ -3,9 +3,9 @@
     <div class="top">
       <div class="header">
         <img alt="logo" class="logo" src="@/assets/img/logo.png"/>
-        <span class="title">{{ systemName }}</span>
+        <span class="title">智能创作全都队</span>
       </div>
-      <div class="desc">Welcome to Register</div>
+      <div class="desc">请填写详细信息来帮助我们重置您的密码</div>
     </div>
     <div class="login">
       <a-form @submit="onSubmit" :form="form">
@@ -16,7 +16,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="用户邮箱"
+                  placeholder="请输入您的邮箱"
                   autocomplete="autocomplete"
                   v-decorator="['email', {rules: [
                       { required: true, message: '请输入邮箱地址', whitespace: true},
@@ -32,7 +32,7 @@
                 <a-col :span="16">
                   <a-input
                       size="large"
-                      placeholder="邮箱验证码"
+                      placeholder="请输入邮箱验证码"
                       autocomplete="autocomplete"
                       v-decorator="['code', {rules: [{ required: true, message: '请输入验证码', whitespace: true}]}]"
                   >
@@ -47,7 +47,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="新的密码"
+                  placeholder="请输入您新的密码"
                   autocomplete="autocomplete"
                   type="password"
                   v-decorator="['password', {rules: [

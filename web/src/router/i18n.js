@@ -9,7 +9,7 @@ module.exports = {
     HK: {
       home: {name: '首頁'},
       dashboard: {
-        name: 'Dashboard',
+        name: '標題和摘要生成',
         workplace: {name: '工作台'},
         analysis: {name: '分析頁'}
       },

@@ -3,9 +3,9 @@
     <div class="top">
       <div class="header">
         <img alt="logo" class="logo" src="@/assets/img/logo.png"/>
-        <span class="title">{{ systemName }}</span>
+        <span class="title">智能创作全都队</span>
       </div>
-      <div class="desc">Welcome to Register</div>
+      <div class="desc">请填写您的个人信息来完成注册</div>
     </div>
     <div class="login">
       <a-form @submit="onSubmit" :form="form">
@@ -16,7 +16,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="Email address"
+                  placeholder="请输入您的邮箱"
                   autocomplete="autocomplete"
                   v-decorator="['email', {rules: [
                       { required: true, message: '请输入邮箱地址', whitespace: true},
@@ -32,7 +32,7 @@
                 <a-col :span="16">
                   <a-input
                       size="large"
-                      placeholder="captcha"
+                      placeholder="请输入邮箱验证码"
                       autocomplete="autocomplete"
                       v-decorator="['code', {rules: [{ required: true, message: '请输入验证码', whitespace: true}]}]"
                   >
@@ -47,7 +47,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="userName"
+                  placeholder="请输入您的用户名"
                   autocomplete="autocomplete"
                   v-decorator="['name', {rules: [{ required: true, message: '请输入您的用户名', whitespace: true}]}]"
               >
@@ -57,7 +57,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="password"
+                  placeholder="请输入密码"
                   autocomplete="autocomplete"
                   type="password"
                   v-decorator="['password', {rules: [
@@ -71,7 +71,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="confirm password"
+                  placeholder="请确认密码"
                   autocomplete="autocomplete"
                   type="password"
                   v-decorator="['password2', {rules: [
@@ -138,7 +138,6 @@ export default {
       this.form.validateFields(['email'], (err) => {
         if (!err) {
           const userEmail = this.form.getFieldValue('email')
-          alert(userEmail)
           getVerCode(userEmail).then(this.afterGetVerCode)
         }
       })
