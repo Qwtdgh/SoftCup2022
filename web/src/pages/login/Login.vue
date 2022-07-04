@@ -49,7 +49,7 @@
             <a-form-item>
               <a-input
                   size="large"
-                  placeholder="password"
+                  placeholder="请输入密码"
                   autocomplete="autocomplete"
                   type="password"
                   v-decorator="['password', {rules: [{ required: true, message: '请输入密码', whitespace: true}]}]"
@@ -85,6 +85,7 @@
           <a-button :loading="logging" style="width: 100%;margin-top: 24px" size="large" htmlType="submit" type="primary">登录</a-button>
         </a-form-item>
       </a-form>
+      <a-button @click="noUserLogin" type="primary" style="width: 100%;margin-top: 24px" size="large">体验一下</a-button>
 <!--      <div>-->
 <!--        <a>忘记密码</a>-->
 <!--        其他登录方式-->
@@ -103,7 +104,7 @@ import {login, getRoutesConfig} from '@/services/user'
 import {setAuthorization} from '@/utils/request'
 import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
-// import Global from "../../Global"
+import Global from "../../Global"
 
 export default {
   name: 'Login',
@@ -129,7 +130,7 @@ export default {
           this.logging = true
           const name = this.form.getFieldValue('name')
           const password = this.form.getFieldValue('password')
-          this.$router.push('/dashboard/workplace')
+          // this.$router.push('/dashboard/workplace')
           login(name, password).then(this.afterLogin)
         }
       })
@@ -137,31 +138,48 @@ export default {
     afterLogin(res) {
       this.logging = false
       const loginRes = res.data
-      // if(loginRes.success){
-      // Global.userId = loginRes.userId
-      //   getRoutesConfig().then(result => {
-      //     const routesConfig = result.data.data
-      //     loadRoutes(routesConfig)
-      //     this.$router.push('/dashboard/workplace')
-      //   })
-      // }
-      if (loginRes.code >= 0) {
-        // console.log(loginRes.data)
-        const {user, permissions, roles} = loginRes.data
-        this.setUser(user)
-        this.setPermissions(permissions)
-        this.setRoles(roles)
-        setAuthorization({token: loginRes.data.token, expireAt: new Date(loginRes.data.expireAt)})
-        // 获取路由配置
+      if(loginRes.success){
+      Global.userId = loginRes.user_id
+      Global.userName = loginRes.user_name
+        // console.log("userid=" + loginRes.user_id)
+        // console.log("username=" + loginRes.user_name)
+        // console.log("userid=" + Global.userId)
+        // console.log("username=" + Global.userName)
+        setAuthorization({token: 'Authorization:' + Math.random(), expireAt: new Date(new Date(new Date().getTime() + 30 * 60 * 1000))})
         getRoutesConfig().then(result => {
           const routesConfig = result.data.data
           loadRoutes(routesConfig)
           this.$router.push('/dashboard/workplace')
-          this.$message.success(loginRes.message, 3)
         })
-      } else {
-        this.error = loginRes.message
       }
+      else{
+        alert("ERROR")
+      }
+      // if (loginRes.code >= 0) {
+      //   // console.log(loginRes.data)
+      //   const {user, permissions, roles} = loginRes.data
+      //   this.setUser(user)
+      //   this.setPermissions(permissions)
+      //   this.setRoles(roles)
+      //   setAuthorization({token: loginRes.data.token, expireAt: new Date(loginRes.data.expireAt)})
+      //   // 获取路由配置
+      //   getRoutesConfig().then(result => {
+      //     const routesConfig = result.data.data
+      //     loadRoutes(routesConfig)
+      //     this.$router.push('/dashboard/workplace')
+      //     this.$message.success(loginRes.message, 3)
+      //   })
+      // } else {
+      //   this.error = loginRes.message
+      // }
+    },
+    noUserLogin() {
+      setAuthorization({token: 'Authorization:' + Math.random(), expireAt: new Date(new Date(new Date().getTime() + 30 * 60 * 1000))})
+      getRoutesConfig().then(result => {
+        const routesConfig = result.data.data
+        loadRoutes(routesConfig)
+        this.$router.push('/dashboard/workplace')
+      })
     }
   }
 }

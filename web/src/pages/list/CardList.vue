@@ -13,7 +13,8 @@
         <template v-else>
           <a-card :hoverable="true">
             <a-card-meta >
-              <div style="margin-bottom: 3px" slot="title">{{item.text_header}} {{item.log_time}}</div>
+              <div style="margin-bottom: 3px" slot="title">{{item.text_header}}</div>
+              <div style="margin-bottom: 3px" slot="title">{{item.log_time}}</div>
 <!--              <a-avatar class="card-avatar" slot="avatar" :src="item.avatar" size="large" />-->
               <div class="meta-content" slot="description">{{item.text}}</div>
             </a-card-meta>
@@ -101,6 +102,10 @@ export default {
       // console.log(registerRes)
       if(registerRes.success){
         alert("删除成功")
+        this.dataSource = []
+        queryAll().then(this.afterQuery)
+        console.log(dataSource)
+        this.$forceUpdate()
       }
       else{
         alert("删除失败")

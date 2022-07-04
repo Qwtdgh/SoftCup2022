@@ -62,6 +62,11 @@ const options = {
             }
           ]
         },
+        {
+          path: 'team',
+          name: '团队介绍',
+          component: () => import('@/pages/team/Founders')
+        },
         // {
         //   path: 'form',
         //   name: '表单页',

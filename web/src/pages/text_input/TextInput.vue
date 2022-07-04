@@ -7,7 +7,7 @@
             :labelCol="{span: 7}"
             :wrapperCol="{span: 10}"
         >
-          <a-input v-decorator="['title', {rules: [{ required: false, message: '请输入标题，如没有请输入无', whitespace: true}]}]" :placeholder="$t('titleInput')"></a-input>
+          <a-input v-decorator="['title', {rules: [{ required: false, message: '请输入标题，如没有请不输入', whitespace: true}]}]" :placeholder="$t('titleInput')"></a-input>
         </a-form-item>
         <a-form-item
             :label="$t('content')"
@@ -28,6 +28,13 @@
     <a-card :body-style="{padding: '24px 32px'}" :bordered="false" title="生成摘要" v-show="myValid">
       <p>{{newAbstract}}</p>
     </a-card>
+    <div>
+    <a-spin tip="Loading..." v-show="wait">
+      <div class="spin-content">
+        您的qlh正在玩命寻找npy...
+      </div>
+    </a-spin>
+  </div>
   </span>
 </template>
 
@@ -38,10 +45,12 @@ export default {
   i18n: require('./i18n'),
   data () {
     let myValid = false
+    let wait = false
     let newTitle = ""
     let newAbstract = ""
     return {
       myValid,
+      wait,
       newTitle,
       newAbstract,
       value: 1,
@@ -62,19 +71,23 @@ export default {
           const title = this.form.getFieldValue('title')
           const content = this.form.getFieldValue('content')
           console.log(title + " " + content)
-          doSomething(title, content).then()
+          this.myValid = false
+          this.wait = true
+          doSomething(title, content).then(this.afterDoSomethig)
         }
       })
     },
     afterDoSomethig(res) {
-      this.myValid = true
       const DoRes = res.data
-      if(DoRes.success){
+      this.wait = false
+      if(DoRes.Success){
         this.newTitle = DoRes.title
         this.newAbstract = DoRes.abstract
+        this.myValid = true
       }
       else{
-        alert("网络请求错误，请您稍后重试")
+        // alert(DoRes.message)
+        alert("请输入中文且内容长度不小于50个字")
       }
     }
   }
@@ -82,5 +95,9 @@ export default {
 </script>
 
 <style scoped>
-
+.spin-content {
+  border: 1px solid #91d5ff;
+  background-color: #e6f7ff;
+  padding: 30px;
+}
 </style>

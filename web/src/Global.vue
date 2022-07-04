@@ -1,6 +1,6 @@
 <script>
 let userId = 0;
-const userName = "admin";
+let userName = "admin";
 export default {
   userId,
   userName,

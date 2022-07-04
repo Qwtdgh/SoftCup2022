@@ -1,9 +1,14 @@
 <template>
-  <div>
+  <span>
+    <div>
     <a-upload-dragger
         name="file"
         :multiple="true"
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        accept=".txt"
+        :data="{
+          userId: this.userId
+        }"
+        action="http://106.54.191.30:8000/api/uploadFile/"
         @change="handleChange"
     >
       <p class="ant-upload-drag-icon">
@@ -25,17 +30,30 @@
       <p>{{newAbstract}}</p>
     </a-card>
   </div>
+  <div>
+    <a-spin tip="Loading..." v-show="wait">
+      <div class="spin-content">
+        您的qlh正在玩命寻找npy...
+      </div>
+    </a-spin>
+  </div>
+  </span>
 </template>
 <script>
+import Global from "../../Global";
 export default {
   data () {
     let myValid = false
+    let wait = false
     let newTitle = ""
     let newAbstract = ""
+    const userId = Global.userId
     return {
+      userId,
       myValid,
       newTitle,
       newAbstract,
+      wait,
       value: 1,
       form: this.$form.createForm(this)
     }
@@ -48,10 +66,13 @@ export default {
       }
       if (status === 'done') {
         this.$message.success(`${info.file.name} file uploaded successfully.`);
+        this.newTitle = info.file.response.title
+        this.newAbstract = info.file.response.abstract
         this.myValid = true
       } else if (status === 'error') {
         this.$message.error(`${info.file.name} file upload failed.`);
       }
+      this.wait = false
     },
   },
 };

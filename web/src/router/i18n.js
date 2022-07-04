@@ -10,8 +10,8 @@ module.exports = {
       home: {name: '首頁'},
       dashboard: {
         name: '標題和摘要生成',
-        workplace: {name: '工作台'},
-        analysis: {name: '分析頁'}
+        workplace: {name: '輸入文件'},
+        analysis: {name: '輸入文本'}
       },
       form: {
         name: '表單頁',
@@ -20,10 +20,10 @@ module.exports = {
         advance: {name: '分步表單'}
       },
       list: {
-        name: '列表頁',
+        name: '歷史記錄',
         query: {name: '查詢表格'},
         primary: {name: '標準列表'},
-        card: {name: '卡片列表'},
+        card: {name: '用戶歷史記錄'},
         search: {
           name: '搜索列表',
           article: {name: '文章'},

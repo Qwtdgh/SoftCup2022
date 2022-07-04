@@ -1,4 +1,4 @@
-import {LOGIN, ROUTES, GET_VER_CODE, REGISTER, QUERY_ALL, DELETE, DOSOMETHING} from '@/services/api'
+import {LOGIN, ROUTES, GET_VER_CODE, REGISTER, QUERY_ALL, DELETE, DOSOMETHING, DOSOMETHINGFILE} from '@/services/api'
 import {request, METHOD, removeAuthorization} from '@/utils/request'
 import Global from "../Global";
 
@@ -11,14 +11,14 @@ import Global from "../Global";
 export async function login(name, password) {
   console.log("name:" + name + ", password" + password)
   console.log(LOGIN)
-  // return request(LOGIN, METHOD.POST, {
-  //   username: name,
-  //   password: password
-  // })
   return request(LOGIN, METHOD.POST, {
-    username: "admin",
-    password: "888888"
+    username: name,
+    password: password
   })
+  // return request(LOGIN, METHOD.POST, {
+  //   username: "admin",
+  //   password: "888888"
+  // })
 }
 
 export async function getRoutesConfig() {
@@ -38,10 +38,17 @@ export async function detele (id) {
 }
 
 export async function doSomething (title, content) {
+  console.log("userId=" + Global.userId)
   return request(DOSOMETHING, METHOD.POST, {
     userId: Global.userId,
     title: title,
-    content: content,
+    text: content,
+  })
+}
+
+export async function doSomethingFile () {
+  return request(DOSOMETHINGFILE, METHOD.POST, {
+    userId: Global.userId,
   })
 }
 
