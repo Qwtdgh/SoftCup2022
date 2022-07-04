@@ -14,5 +14,6 @@ module.exports = {
   REGISTER: `${BASE_URL}/register/`,
   FORGOT_PASSWORD: `${BASE_URL}/forgetPassword/`,
   QUERY_ALL: `${BASE_URL}/queryAll/`,
-  DELETE: `${BASE_URL}/delete/`
+  DELETE: `${BASE_URL}/delete/`,
+  DOSOMETHING: `${BASE_URL}/dosomething/`,
 }

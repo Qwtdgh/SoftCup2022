@@ -1,5 +1,6 @@
-import {LOGIN, ROUTES, GET_VER_CODE, REGISTER, QUERY_ALL, DELETE} from '@/services/api'
+import {LOGIN, ROUTES, GET_VER_CODE, REGISTER, QUERY_ALL, DELETE, DOSOMETHING} from '@/services/api'
 import {request, METHOD, removeAuthorization} from '@/utils/request'
+import Global from "../Global";
 
 /**
  * 登录服务
@@ -36,6 +37,14 @@ export async function detele (id) {
   })
 }
 
+export async function doSomething (title, content) {
+  return request(DOSOMETHING, METHOD.POST, {
+    userId: Global.userId,
+    title: title,
+    content: content,
+  })
+}
+
 export async function forgotPassword(userEmail, password, code) {
   return request(REGISTER, METHOD.POST, {
     userEmail: userEmail,
@@ -46,7 +55,7 @@ export async function forgotPassword(userEmail, password, code) {
 
 export async function queryAll() {
   return request(QUERY_ALL, METHOD.POST, {
-    userId: 1,
+    userId: Global.userId,
   })
 }
 
