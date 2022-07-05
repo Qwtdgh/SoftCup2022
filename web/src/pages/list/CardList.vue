@@ -6,7 +6,7 @@
     >
       <a-list-item slot="renderItem" slot-scope="item">
         <template v-if="item.add">
-          <a-button class="new-btn" type="dashed" @click="route2Home">
+          <a-button size="large" class="new-btn" type="dashed" @click="route2Home">
             <a-icon type="plus" />新增查询
           </a-button>
         </template>
@@ -18,7 +18,7 @@
 <!--              <a-avatar class="card-avatar" slot="avatar" :src="item.avatar" size="large" />-->
               <div class="meta-content" slot="description">{{item.text}}</div>
             </a-card-meta>
-            <a slot="actions">详情</a>
+            <a slot="actions" @click="route2Xiangqing(item.text_header, item.log_time, item.text)">详情</a>
             <a slot="actions" @click="deteleFunc(item.id)">删除</a>
           </a-card>
         </template>
@@ -31,7 +31,7 @@
 import {getRoutesConfig, detele, queryAll} from "../../services/user";
 import {loadRoutes} from "../../utils/routerUtil";
 
-const dataSource = []
+let dataSource = []
 dataSource.push({
   add: true
 })
@@ -77,6 +77,22 @@ export default {
     // }
   },
   methods: {
+    route2Xiangqing(text_header, log_time, text){
+      getRoutesConfig().then(result => {
+        const routesConfig = result.data.data
+        loadRoutes(routesConfig)
+        console.log(text)
+        this.$router.push({
+          path: '/details/basicDetail',
+          name: '查询详情页',
+          params: {
+            text_header: text_header,
+            log_time: log_time,
+            text: text,
+          }
+        })
+      })
+    },
     route2Home() {
       getRoutesConfig().then(result => {
         const routesConfig = result.data.data
@@ -86,6 +102,7 @@ export default {
     },
     deteleFunc(id) {
       detele(id).then(this.afterDelete)
+      this.deleteItem(id)
     },
     afterQuery(res) {
       const registerRes = res.data
@@ -96,16 +113,22 @@ export default {
           dataSource.push(item)
         }
       }
+      // console.log(dataSource)
+    },
+    deleteItem(id){
+      this.dataSource = this.dataSource.filter(function(item) {
+        return item.id !== id
+      });
     },
     afterDelete(res) {
-      const registerRes = res.data
       // console.log(registerRes)
+      // this.$forceUpdate()
+      const registerRes = res.data
       if(registerRes.success){
-        alert("删除成功")
-        this.dataSource = []
         queryAll().then(this.afterQuery)
         console.log(dataSource)
         this.$forceUpdate()
+        alert("删除成功")
       }
       else{
         alert("删除失败")
@@ -124,7 +147,7 @@ export default {
   .new-btn{
     border-radius: 2px;
     width: 100%;
-    height: 187px;
+    height: 214px;
   }
   .meta-content{
     position: relative;

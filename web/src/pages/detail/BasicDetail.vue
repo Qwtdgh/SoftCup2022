@@ -1,37 +1,21 @@
 <template>
-    <page-layout title="基础详情页">
+    <page-layout :title="查询详情页">
       <a-card :bordered="false">
-        <detail-list title="退款详情">
-          <detail-list-item term="取货单号">1000000000</detail-list-item>
-          <detail-list-item term="状态">已取货</detail-list-item>
-          <detail-list-item term="销售单号">987654321</detail-list-item>
-          <detail-list-item term="子订单">1234567890</detail-list-item>
+        <detail-list title="查询详情">
+          <detail-list-item term="查询时间">{{log_time}}</detail-list-item>
+          <detail-list-item term="输入文本">{{text}}</detail-list-item>
+<!--          <detail-list-item term="状态">已取货</detail-list-item>-->
+<!--          <detail-list-item term="销售单号">987654321</detail-list-item>-->
+<!--          <detail-list-item term="子订单">1234567890</detail-list-item>-->
         </detail-list>
         <a-divider style="margin-bottom: 32px"/>
-        <detail-list title="用户信息">
-          <detail-list-item term="用户姓名">付小小</detail-list-item>
-          <detail-list-item term="联系电话">18100000001</detail-list-item>
-          <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>
-          <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路19号</detail-list-item>
-          <detail-list-item term="备注">无</detail-list-item>
+        <detail-list title="查询结果">
+          <detail-list-item term="生成标题">{{text_header}}</detail-list-item>
+<!--          <detail-list-item term="联系电话">18100000001</detail-list-item>-->
+<!--          <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>-->
+<!--          <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路19号</detail-list-item>-->
+<!--          <detail-list-item term="备注">无</detail-list-item>-->
         </detail-list>
-        <a-divider style="margin-bottom: 32px"/>
-        <div class="title">退货商品</div>
-        <a-table
-          row-key="id"
-          style="margin-bottom: 24px"
-          :columns="goodsColumns"
-          :dataSource="goodsData"
-          :pagination="false"
-        >
-        </a-table>
-        <div class="title">退货进度</div>
-        <a-table
-          :columns="scheduleColumns"
-          :dataSource="scheduleData"
-          :pagination="false"
-        >
-        </a-table>
       </a-card>
     </page-layout>
 </template>
@@ -39,6 +23,8 @@
 <script>
 import DetailList from '../../components/tool/DetailList'
 import PageLayout from '../../layouts/PageLayout'
+import {getRoutesConfig} from "../../services/user";
+import {loadRoutes} from "../../utils/routerUtil";
 
 const DetailListItem = DetailList.Item
 
@@ -113,87 +99,36 @@ const goodsData = [
   }
 ]
 
-const scheduleColumns = [
-  {
-    title: '时间',
-    dataIndex: 'time',
-    key: 'time'
-  },
-  {
-    title: '当前进度',
-    dataIndex: 'rate',
-    key: 'rate'
-  },
-  {
-    title: '状态',
-    dataIndex: 'status',
-    key: 'status'
-  },
-  {
-    title: '操作员ID',
-    dataIndex: 'operator',
-    key: 'operator'
-  },
-  {
-    title: '耗时',
-    dataIndex: 'cost',
-    key: 'cost'
-  }
-]
 
-const scheduleData = [
-  {
-    key: '1',
-    time: '2017-10-01 14:10',
-    rate: '联系客户',
-    status: 'processing',
-    operator: '取货员 ID1234',
-    cost: '5mins'
-  },
-  {
-    key: '2',
-    time: '2017-10-01 14:05',
-    rate: '取货员出发',
-    status: 'success',
-    operator: '取货员 ID1234',
-    cost: '1h'
-  },
-  {
-    key: '3',
-    time: '2017-10-01 13:05',
-    rate: '取货员接单',
-    status: 'success',
-    operator: '取货员 ID1234',
-    cost: '5mins'
-  },
-  {
-    key: '4',
-    time: '2017-10-01 13:00',
-    rate: '申请审批通过',
-    status: 'success',
-    operator: '系统',
-    cost: '1h'
-  },
-  {
-    key: '5',
-    time: '2017-10-01 12:00',
-    rate: '发起退货申请',
-    status: 'success',
-    operator: '用户',
-    cost: '5mins'
-  }
-]
 
 export default {
   name: 'BasicDetail',
   components: {PageLayout, DetailListItem, DetailList},
   data () {
+    let text
+    let text_header
+    let log_time
     return {
+      text,
+      text_header,
+      log_time,
       goodsColumns,
       goodsData,
-      scheduleColumns,
-      scheduleData
     }
+  },
+  created() {
+    if(this.$route.params.text === undefined){
+      alert("请先选择您要查看详细信息的查询")
+      getRoutesConfig().then(result => {
+        const routesConfig = result.data.data
+        loadRoutes(routesConfig)
+        this.$router.push({path: '/list/card',})
+      })
+    }
+    this.text_header = this.$route.params.text_header
+    this.log_time = this.$route.params.log_time
+    this.text = this.$route.params.text
+    // console.log(this.$route.params)
   }
 }
 </script>

@@ -56,16 +56,11 @@ const options = {
               // component: () => import('@/pages/dashboard/workplace'),
             },
             {
-              path: 'analysis',
+              path: 'query',
               name: '输入文本',
               component: () => import('@/pages/text_input/TextInput'),
             }
           ]
-        },
-        {
-          path: 'team',
-          name: '团队介绍',
-          component: () => import('@/pages/team/Founders')
         },
         // {
         //   path: 'form',
@@ -96,6 +91,14 @@ const options = {
         //   ]
         // },
         {
+          path: 'management',
+          name: '用户信息管理',
+          meta: {
+            icon: 'check-circle-o'
+          },
+          component: () => import('@/pages/list/StandardList'),
+        },
+        {
           path: 'list',
           name: '历史记录',
           meta: {
@@ -119,11 +122,6 @@ const options = {
             //     invisible: true
             //   },
             //   component: () => import('@/pages/Demo')
-            // },
-            // {
-            //   path: 'primary',
-            //   name: '标准列表',
-            //   component: () => import('@/pages/list/StandardList'),
             // },
             {
               path: 'card',
@@ -154,26 +152,26 @@ const options = {
             // }
           ]
         },
-        // {
-        //   path: 'details',
-        //   name: '详情页',
-        //   meta: {
-        //     icon: 'profile'
-        //   },
-        //   component: BlankView,
-        //   children: [
-        //     {
-        //       path: 'basic',
-        //       name: '基础详情页',
-        //       component: () => import('@/pages/detail/BasicDetail')
-        //     },
-        //     {
-        //       path: 'advance',
-        //       name: '高级详情页',
-        //       component: () => import('@/pages/detail/AdvancedDetail')
-        //     }
-        //   ]
-        // },
+        {
+          path: 'details',
+          name: '详情页',
+          meta: {
+            icon: 'profile'
+          },
+          component: BlankView,
+          children: [
+            {
+              path: 'basicDetail',
+              name: '查询详情页',
+              component: () => import('@/pages/detail/BasicDetail')
+            },
+            // {
+            //   path: 'advance',
+            //   name: '高级详情页',
+            //   component: () => import('@/pages/detail/AdvancedDetail')
+            // }
+          ]
+        },
         // {
         //   path: 'result',
         //   name: '结果页',
@@ -277,6 +275,14 @@ const options = {
         //   },
         //   component: () => import('@/pages/Demo')
         // },
+        {
+          path: 'team',
+          name: '团队介绍',
+          meta: {
+            icon: 'project'
+          },
+          component: () => import('@/pages/team/Founders')
+        },
         {
           name: 'Ant Design Vue',
           path: 'antdv',

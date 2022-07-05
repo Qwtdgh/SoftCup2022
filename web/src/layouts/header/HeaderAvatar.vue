@@ -31,11 +31,15 @@ export default {
   name: 'HeaderAvatar',
   computed: {
     ...mapGetters('account', ['user']),
+    // userName() {
+    //   return window.localStorage.getitem('userName');
+    // }
   },
   data() {
-    const userName = Global.userName
-    return {
-      userName,
+    let userName = Global.userName
+    console.log(userName)
+    return{
+      userName
     }
   },
   methods: {

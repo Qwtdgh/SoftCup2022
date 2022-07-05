@@ -7,7 +7,7 @@
             :labelCol="{span: 7}"
             :wrapperCol="{span: 10}"
         >
-          <a-input v-decorator="['title', {rules: [{ required: false, message: '请输入标题，如没有请不输入', whitespace: true}]}]" :placeholder="$t('titleInput')"></a-input>
+          <a-input v-decorator="['title', {rules: [{ required: false, message: '请输入标题', whitespace: true}]}]" :placeholder="$t('titleInput')"></a-input>
         </a-form-item>
         <a-form-item
             :label="$t('content')"

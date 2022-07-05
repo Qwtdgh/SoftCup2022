@@ -1,68 +1,92 @@
 <template>
-  <span>
+  <a-carousel autoplay :autoplaySpeed="autoplaySpeed" arrows dots-class="slick-dots slick-thumb">
+    <a slot="customPaging" slot-scope="props">
+      <img :src="getImgUrl(props.i)"/>
+    </a>
     <div>
-    <span style="background-color: #ffffff;font-size: 40px; font-weight: bold; margin-left: 40px;">
-      开发团队
-    </span>
-  </div>
-  <div>
-    <el-carousel :interval="4000" type="card" height="500px" style="width: 60%; margin-top: 2%; margin-left: 20%">
-      <el-carousel-item v-for="item in this.founders" :key="item" style="border-radius: 12px">
-        <el-image :src="item.path" class="image" style="margin-top: 20px"></el-image>
-        <div style="margin-top: 120px; margin-left: 20%">
-          <span style="font-size: 30px; font-weight: bold">{{ item.name }}</span>
-        </div>
-        <div style="margin-left: 20%; margin-top: 25px">
-          <span style="font-size: 20px; font-weight: bold">{{item.role}}</span>
-        </div>
-      </el-carousel-item>
-    </el-carousel>
-  </div>
-  </span>
+      <img :src="qlh" alt="组长跑路至今未归" height="500"/>
+      <p align="center">QLH 组长 模型训练</p>
+    </div>
+    <div>
+      <img :src="pbq" alt="模型训练跑路至今未归" height="500"/>
+      <p align="center">PBQ 模型训练</p>
+    </div>
+    <div>
+      <img :src="boy" alt="后端开发跑路至今未归" height="500"/>
+      <p align="center">BOY 后端开发</p>
+    </div>
+    <div>
+      <img :src="zzk" alt="前端开发跑路至今未归" height="500"/>
+      <p align="center">ZZK 前端开发</p>
+    </div>
+  </a-carousel>
 </template>
-
 <script>
-import qlh from "../../assets/img/alipay.png"
-import msq from "../../assets/img/alipay.png"
-import mjw from "../../assets/img/alipay.png"
-import lhy from "../../assets/img/alipay.png"
+import qlh from '../../assets/img/qlh.jpg'
+import pbq from '../../assets/img/pbq.jpg'
+import boy from '../../assets/img/boy.jpg'
+import zzk from '../../assets/img/zzk.jpg'
+
+const baseUrl =
+    'https://raw.githubusercontent.com/vueComponent/ant-design-vue/master/components/vc-slick/assets/img/react-slick/';
 export default {
-  name: "Founders",
   data() {
     return {
-      founders: [
-        {path: qlh, name:"曲乐皓", role:"Vue前端开发"},
-        {path: msq, name:"马世清", role:"ROS机器人功能框架开发"},
-        {path: mjw, name:"麻佳炜", role:"Springboot后端开发"},
-        {path: lhy, name:"刘怀元", role:"ROS机器人火情检测开发"}
-      ]
+      baseUrl,
+      qlh,
+      pbq,
+      boy,
+      zzk,
+    };
+  },
+  methods: {
+    getImgUrl(i) {
+      if (i === 0) {
+        return `${qlh}`;
+      } else if (i === 1) {
+        return `${pbq}`;
+      } else if (i === 2) {
+        return `${boy}`;
+      }
+      return `${zzk}`;
+    },
+  },
+  computed:{
+    autoplaySpeed(){
+      return  2000
     }
-  }
-}
+  },
+};
 </script>
-
 <style scoped>
-.el-carousel__item h3 {
-  color: #475669;
-  opacity: 0.75;
-  line-height: 200px;
-  margin: 0;
-  text-align: center;
-}
-.image {
-  width: 200px;
-  height: 200px;
-  top:30%;
-  left:50%;
-  border-radius: 10px;
-  transform:translate(-50%,-50%);
+/* For demo */
+.ant-carousel >>> .slick-dots {
+  height: auto;
 }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
+.ant-carousel >>> .slick-slide img {
+  border: 5px solid #fff;
+  display: block;
+  margin: auto;
+  max-width: 50%;
 }
 
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+.ant-carousel >>> .slick-thumb {
+  bottom: -45px;
+}
+
+.ant-carousel >>> .slick-thumb li {
+  width: 60px;
+  height: 45px;
+}
+
+.ant-carousel >>> .slick-thumb li img {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%);
+}
+
+.ant-carousel >>> .slick-thumb li.slick-active img {
+  filter: grayscale(0%);
 }
 </style>

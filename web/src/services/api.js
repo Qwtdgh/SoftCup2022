@@ -16,5 +16,7 @@ module.exports = {
   QUERY_ALL: `${BASE_URL}/queryAll/`,
   DELETE: `${BASE_URL}/delete/`,
   DOSOMETHING: `${BASE_URL}/uploadText/`,
-  DOSOMETHINGFILE: `${BASE_URL}/dosomethingfile/`,
+  QUERY_USER: `${BASE_URL}/queryUser/`,
+  UPDATE_USER: `${BASE_URL}/updateUser/`,
+  DELETE_USER: `${BASE_URL}/deleteUser/`,
 }

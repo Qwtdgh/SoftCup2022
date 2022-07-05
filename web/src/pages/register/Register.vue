@@ -162,8 +162,8 @@ export default {
         alert("已经成功发送")
       }
       else{
-        alert("test")
-        // alert(registerRes.message)
+        // alert("test")
+        alert(registerRes.message)
       }
     },
     compareToFirstPassword(rule, value, callback) {

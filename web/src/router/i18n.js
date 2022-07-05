@@ -19,6 +19,7 @@ module.exports = {
         step: {name: '分步表單'},
         advance: {name: '分步表單'}
       },
+      management: {name: '用戶信息管理'},
       list: {
         name: '歷史記錄',
         query: {name: '查詢表格'},
@@ -33,7 +34,7 @@ module.exports = {
       },
       details: {
         name: '詳情頁',
-        basic: {name: '基礎詳情頁'},
+        basic: {name: '查詢詳情頁'},
         advance: {name: '高級詳情頁'}
       },
       result: {
