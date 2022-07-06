@@ -8,7 +8,7 @@
         <span style="float: left; font-size: 20px">智慧创作全都队旨在为热爱文学创作的学者提供文学创作参考，激发用户的灵感。四位成员均来自北京航空航天大学计算机学院，获得过北京市蓝桥杯“二等奖”。</span>
       </a-row>
     </a-row>
-    <a-row style="margin-top: 50px">
+    <a-row style="margin-top: 45px">
       <div>
         <a-carousel autoplay :autoplaySpeed="autoplaySpeed" arrows dots-class="slick-dots slick-thumb">
           <a slot="customPaging" slot-scope="props">
