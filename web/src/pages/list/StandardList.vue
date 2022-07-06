@@ -48,6 +48,7 @@
 <!--              </div>-->
             </div>
             <a-drawer
+                destroy-on-close="true"
                 :title="'用户' + userLists[myIndex].id + '：' + userLists[myIndex].username"
                 :width="720"
                 :visible="visible"
@@ -197,6 +198,9 @@ export default {
       myValid1: false,
       myValid2: false,
       myIndex: 0,
+      // myUserid: 0,
+      myUsername: '',
+      // myEmail: '',
     }
   },
   created() {
@@ -243,6 +247,8 @@ export default {
           // login(name, password).then(this.afterLogin)
           await updateUser(userId, userName, userEmail).then(this.afterUpdateUser)
           queryUser().then(this.afterQuery)
+          this.myValid1 = false;
+          this.myValid2 = false;
           this.$forceUpdate()
         }
       })
@@ -268,13 +274,18 @@ export default {
         this.$forceUpdate()
       }
     },
-    showDrawer(index) {
+    async showDrawer(index) {
+      await this.myIndexChange(index)
       this.visible = true;
+    },
+    myIndexChange(index) {
       this.myIndex = index
-      // alert(this.myIndex)
+      this.myUsername = userLists[index].username
     },
     onClose() {
       this.visible = false;
+      this.myValid1 = false;
+      this.myValid2 = false;
     },
     onDeleteUser(userId) {
       deleteUser(userId).then(this.afterDeleteUser)

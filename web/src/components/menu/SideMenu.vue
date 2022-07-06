@@ -3,7 +3,7 @@
     <div :class="['logo', theme]">
       <router-link to="/dashboard/workplace">
         <img src="@/assets/img/logo.png">
-        <h1>智能创作全都队</h1>
+        <h1>智慧创作平台</h1>
       </router-link>
     </div>
     <i-menu :theme="theme" :collapsed="collapsed" :options="menuData" @select="onSelect" class="menu"/>
