@@ -16,19 +16,19 @@
           </a>
           <div>
             <img :src="qlh" alt="组长跑路至今未归" height="500"/>
-            <p align="center">QLH 组长 模型训练</p>
+            <p align="center">曲乐皓 组长 模型训练</p>
           </div>
           <div>
             <img :src="pbq" alt="模型训练跑路至今未归" height="500"/>
-            <p align="center">PBQ 模型训练</p>
+            <p align="center">裴宝琦 模型训练</p>
           </div>
           <div>
             <img :src="boy" alt="后端开发跑路至今未归" height="500"/>
-            <p align="center">BOY 后端开发</p>
+            <p align="center">刘博一 后端开发 服务器部署</p>
           </div>
           <div>
             <img :src="zzk" alt="前端开发跑路至今未归" height="500"/>
-            <p align="center">ZZK 前端开发</p>
+            <p align="center">朱祖坤 前端开发</p>
           </div>
         </a-carousel>
       </div>

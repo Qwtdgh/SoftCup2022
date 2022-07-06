@@ -16,12 +16,12 @@
               <a slot="title">{{ item.username }}</a>
             </a-list-item-meta>
             <div slot="actions">
-              <a @click="showDrawer">编辑</a>
+              <a @click="showDrawer(index)">编辑</a>
             </div>
             <div slot="actions">
               <a-dropdown>
                 <a-menu slot="overlay">
-                  <a-menu-item><a @click="showDrawer">编辑</a></a-menu-item>
+                  <a-menu-item><a @click="showDrawer(index)">编辑</a></a-menu-item>
                   <a-menu-item><a @click="onDeleteUser(item.id)">删除</a></a-menu-item>
                 </a-menu>
                 <a>更多
@@ -48,20 +48,20 @@
 <!--              </div>-->
             </div>
             <a-drawer
-                :title="'用户' + item.id + '：' + item.username"
+                :title="'用户' + userLists[myIndex].id + '：' + userLists[myIndex].username"
                 :width="720"
                 :visible="visible"
                 :body-style="{ paddingBottom: '80px' }"
                 @close="onClose"
             >
-              <a-form :form="form" @submit="onSubmit(item.id, item.username, item.email)" layout="vertical" hide-required-mark>
+              <a-form :form="form" @submit="onSubmit(userLists[myIndex].id, userLists[myIndex].username, userLists[myIndex].email)" layout="vertical" hide-required-mark>
                 <a-row :gutter="16">
                   <a-col :span="12">
                     <a-form-item label="用户ID">
                       <a-input
                           size="large"
-                          :placeholder="item.id"
-                          :default-value="item.id"
+                          :placeholder="userLists[myIndex].id"
+                          :default-value="userLists[myIndex].id"
                           disabled="true"
                           autocomplete="autocomplete"
                           v-decorator="['userId', {
@@ -79,9 +79,9 @@
                       <a-input
                           @change="test1"
                           size="large"
-                          :placeholder="item.username"
-                          :value="item.username"
-                          :default-value="item.username"
+                          :placeholder="userLists[myIndex].username"
+                          :value="userLists[myIndex].username"
+                          :default-value="userLists[myIndex].username"
                           autocomplete="autocomplete"
                           v-decorator="['userName', {rules: [
                       { required: myValid1, message: '请输入用户名', whitespace: true},
@@ -99,9 +99,9 @@
                       <a-input
                           @change="test2"
                           size="large"
-                          :placeholder="item.email"
-                          :value="item.email"
-                          :default-value="item.email"
+                          :placeholder="userLists[myIndex].email"
+                          :value="userLists[myIndex].email"
+                          :default-value="userLists[myIndex].email"
                           autocomplete="autocomplete"
                           v-decorator="['userEmail', {rules: [
                       { required: myValid2, message: '请输入邮箱地址', whitespace: true},
@@ -154,7 +154,7 @@
                   </a-button>
                 </a-form-item>
                 <a-form-item>
-                  <a-button type="primary"  @click="onSubmit(item.id, item.username, item.email)">
+                  <a-button type="primary"  @click="onSubmit(userLists[myIndex].id, userLists[myIndex].username, userLists[myIndex].email)">
                     Submit
                   </a-button>
                 </a-form-item>
@@ -196,7 +196,7 @@ export default {
       myPermission: false,
       myValid1: false,
       myValid2: false,
-      myValid3: false,
+      myIndex: 0,
     }
   },
   created() {
@@ -221,8 +221,9 @@ export default {
   },
   methods: {
     onSubmit(newUserId, newUserName, newUserEmail) {
+      // alert(newUserId + " " + newUserName + " " + newUserEmail)
       // e.preventDefault()
-      this.form.validateFields((err) => {
+      this.form.validateFields(async (err) => {
         if (!err) {
           let userId = newUserId
           let userName = this.form.getFieldValue('userName')
@@ -240,7 +241,7 @@ export default {
           // alert(userId + " " + userName + " " + userPassword + " " + userEmail)
           // this.$router.push('/dashboard/workplace')
           // login(name, password).then(this.afterLogin)
-          updateUser(userId, userName, userEmail).then(this.afterUpdateUser)
+          await updateUser(userId, userName, userEmail).then(this.afterUpdateUser)
           queryUser().then(this.afterQuery)
           this.$forceUpdate()
         }
@@ -267,8 +268,10 @@ export default {
         this.$forceUpdate()
       }
     },
-    showDrawer() {
+    showDrawer(index) {
       this.visible = true;
+      this.myIndex = index
+      // alert(this.myIndex)
     },
     onClose() {
       this.visible = false;
@@ -310,9 +313,6 @@ export default {
     test2(){
       this.myValid2 = true
     },
-    test3(){
-      this.myValid3 = true
-    },
   }
 }
 </script>
@@ -335,3 +335,4 @@ export default {
   }
 }
 </style>
+

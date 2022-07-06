@@ -31,7 +31,7 @@
     <div>
     <a-spin tip="Loading..." v-show="wait">
       <div class="spin-content">
-        您的qlh正在玩命寻找npy...
+        我们正在玩命运行...
       </div>
     </a-spin>
   </div>

@@ -33,7 +33,7 @@
   <div>
     <a-spin tip="Loading..." v-show="wait">
       <div class="spin-content">
-        您的qlh正在玩命寻找npy...
+        我们正在玩命运行...
       </div>
     </a-spin>
   </div>
@@ -65,6 +65,7 @@ export default {
         console.log(info.file, info.fileList);
       }
       if (status === 'done') {
+        this.wait = true
         this.$message.success(`${info.file.name} file uploaded successfully.`);
         this.newTitle = info.file.response.title
         this.newAbstract = info.file.response.abstract
