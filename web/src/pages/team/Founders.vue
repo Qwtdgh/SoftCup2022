@@ -1,25 +1,40 @@
 <template>
-  <a-carousel autoplay :autoplaySpeed="autoplaySpeed" arrows dots-class="slick-dots slick-thumb">
-    <a slot="customPaging" slot-scope="props">
-      <img :src="getImgUrl(props.i)"/>
-    </a>
-    <div>
-      <img :src="qlh" alt="组长跑路至今未归" height="500"/>
-      <p align="center">QLH 组长 模型训练</p>
-    </div>
-    <div>
-      <img :src="pbq" alt="模型训练跑路至今未归" height="500"/>
-      <p align="center">PBQ 模型训练</p>
-    </div>
-    <div>
-      <img :src="boy" alt="后端开发跑路至今未归" height="500"/>
-      <p align="center">BOY 后端开发</p>
-    </div>
-    <div>
-      <img :src="zzk" alt="前端开发跑路至今未归" height="500"/>
-      <p align="center">ZZK 前端开发</p>
-    </div>
-  </a-carousel>
+  <div>
+    <a-row style="margin-top: 20px; margin-left: 20px">
+      <a-row>
+        <span style="float: left; font-weight: bold; font-size: 40px">团队介绍</span>
+      </a-row>
+      <a-row style="margin-top: 20px">
+        <span style="float: left; font-size: 20px">智慧创作全都队旨在为热爱文学创作的学者提供文学创作参考，激发用户的灵感。四位成员均来自北京航空航天大学计算机学院，获得过北京市蓝桥杯“二等奖”。</span>
+      </a-row>
+    </a-row>
+    <a-row style="margin-top: 50px">
+      <div>
+        <a-carousel autoplay :autoplaySpeed="autoplaySpeed" arrows dots-class="slick-dots slick-thumb">
+          <a slot="customPaging" slot-scope="props">
+            <img :src="getImgUrl(props.i)"/>
+          </a>
+          <div>
+            <img :src="qlh" alt="组长跑路至今未归" height="500"/>
+            <p align="center">QLH 组长 模型训练</p>
+          </div>
+          <div>
+            <img :src="pbq" alt="模型训练跑路至今未归" height="500"/>
+            <p align="center">PBQ 模型训练</p>
+          </div>
+          <div>
+            <img :src="boy" alt="后端开发跑路至今未归" height="500"/>
+            <p align="center">BOY 后端开发</p>
+          </div>
+          <div>
+            <img :src="zzk" alt="前端开发跑路至今未归" height="500"/>
+            <p align="center">ZZK 前端开发</p>
+          </div>
+        </a-carousel>
+      </div>
+    </a-row>
+
+  </div>
 </template>
 <script>
 import qlh from '../../assets/img/qlh.jpg'

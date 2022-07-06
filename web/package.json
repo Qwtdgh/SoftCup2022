@@ -16,6 +16,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@antv/data-set": "^0.11.4",
+    "@vue/shared": "^3.2.37",
     "animate.css": "^4.1.0",
     "ant-design-vue": "1.7.2",
     "axios": "^0.19.2",
@@ -25,8 +26,10 @@
     "element-plus": "^2.2.8",
     "enquire.js": "^2.1.6",
     "highlight.js": "^10.2.1",
+    "install": "^0.13.0",
     "js-cookie": "^2.2.1",
     "mockjs": "^1.1.0",
+    "npm": "^8.13.2",
     "nprogress": "^0.2.0",
     "plupload": "^2.3.9",
     "viser-vue": "^2.4.8",
