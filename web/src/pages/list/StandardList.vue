@@ -6,7 +6,7 @@
           :bordered="false"
           title="用户列表"
       >
-        <a-list size="large" :pagination="{showSizeChanger: true, showQuickJumper: true, pageSize: 5, total: 50}">
+        <a-list size="large">
           <a-list-item v-for="(item,index) in userLists" :key="index">
             <a-list-item-meta
                 :description="item.email"

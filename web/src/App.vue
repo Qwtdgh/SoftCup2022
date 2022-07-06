@@ -90,7 +90,7 @@ export default {
     setHtmlTitle() {
       const route = this.$route
       const key = route.path === '/' ? 'home.name' : getI18nKey(route.matched[route.matched.length - 1].path)
-      document.title = process.env.VUE_APP_NAME + ' | ' + this.$t(key)
+      document.title = '智能创作全都队' + ' | ' + this.$t(key)
     },
     popContainer() {
       return document.getElementById("popContainer")
