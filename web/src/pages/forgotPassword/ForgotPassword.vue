@@ -89,8 +89,8 @@
 
 <script>
 import CommonLayout from '@/layouts/CommonLayout'
-import {login, getRoutesConfig, forgotPassword} from '@/services/user'
-import {loadRoutes} from '@/utils/routerUtil'
+import {login, forgotPassword} from '@/services/user'
+// import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
 
 export default {
@@ -136,11 +136,11 @@ export default {
     afterForgotPassword(res){
       const tempRes = res.data
       if(tempRes.code >= 0) {
-        getRoutesConfig().then(result => {
-          const routesConfig = result.data.data
-          loadRoutes(routesConfig)
+        // getRoutesConfig().then(result => {
+        //   const routesConfig = result.data.data
+        //   loadRoutes(routesConfig)
           this.$router.push('/login')
-        })
+        // })
       }
       else{
         alert(tempRes.message)

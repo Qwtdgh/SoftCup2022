@@ -99,8 +99,8 @@
 
 <script>
 import CommonLayout from '@/layouts/CommonLayout'
-import {getRoutesConfig, register} from '@/services/user'
-import {loadRoutes} from '@/utils/routerUtil'
+import { register} from '@/services/user'
+// import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
 import {getVerCode} from "../../services/user";
 
@@ -145,11 +145,11 @@ export default {
     afterRegister(res){
       const registerRes = res.data
       if(registerRes.success) {
-        getRoutesConfig().then(result => {
-          const routesConfig = result.data.data
-          loadRoutes(routesConfig)
+        // getRoutesConfig().then(result => {
+        //   const routesConfig = result.data.data
+        //   loadRoutes(routesConfig)
           this.$router.push('/login')
-        })
+        // })
       }
       else{
         alert(registerRes.message)

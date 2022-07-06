@@ -104,9 +104,9 @@
 
 <script>
 import CommonLayout from '@/layouts/CommonLayout'
-import {login, getRoutesConfig} from '@/services/user'
+import {login} from '@/services/user'
 import {setAuthorization} from '@/utils/request'
-import {loadRoutes} from '@/utils/routerUtil'
+// import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
 import Global from "../../Global";
 
@@ -159,11 +159,11 @@ export default {
           token: 'Authorization:' + Math.random(),
           expireAt: new Date(new Date(new Date().getTime() + 30 * 60 * 1000))
         })
-        getRoutesConfig().then(result => {
-          const routesConfig = result.data.data
-          loadRoutes(routesConfig)
+        // getRoutesConfig().then(result => {
+        //   const routesConfig = result.data.data
+        //   loadRoutes(routesConfig)
           this.$router.push('/dashboard/workplace')
-        })
+        // })
       } else {
         alert("ERROR")
       }
@@ -190,11 +190,15 @@ export default {
         token: 'Authorization:' + Math.random(),
         expireAt: new Date(new Date(new Date().getTime() + 30 * 60 * 1000))
       })
-      getRoutesConfig().then(result => {
-        const routesConfig = result.data.data
-        loadRoutes(routesConfig)
-        this.$router.push('/dashboard/workplace')
-      })
+      // getRoutesConfig().then(result => {
+      //   const routesConfig = result.data.data
+      //   loadRoutes(routesConfig)
+      window.localStorage.setItem("userId",0)
+      window.localStorage.setItem("userName","test")
+      Global.userId = 0
+      Global.userName = "test"
+      this.$router.push('/dashboard/workplace')
+      // })
     }
   }
 }

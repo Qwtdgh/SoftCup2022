@@ -23,8 +23,8 @@
 <script>
 import DetailList from '../../components/tool/DetailList'
 import PageLayout from '../../layouts/PageLayout'
-import {getRoutesConfig} from "../../services/user";
-import {loadRoutes} from "../../utils/routerUtil";
+// import {getRoutesConfig} from "../../services/user";
+// import {loadRoutes} from "../../utils/routerUtil";
 
 const DetailListItem = DetailList.Item
 
@@ -119,11 +119,11 @@ export default {
   created() {
     if(this.$route.params.text === undefined){
       alert("请先选择您要查看详细信息的查询")
-      getRoutesConfig().then(result => {
-        const routesConfig = result.data.data
-        loadRoutes(routesConfig)
+      // getRoutesConfig().then(result => {
+      //   const routesConfig = result.data.data
+      //   loadRoutes(routesConfig)
         this.$router.push({path: '/list/card',})
-      })
+      // })
     }
     this.text_header = this.$route.params.text_header
     this.log_time = this.$route.params.log_time

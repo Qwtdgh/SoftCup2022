@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import {getRoutesConfig, detele, queryAll} from "../../services/user";
-import {loadRoutes} from "../../utils/routerUtil";
+import { detele, queryAll} from "../../services/user";
+// import {loadRoutes} from "../../utils/routerUtil";
 
 let dataSource = []
 dataSource.push({
@@ -78,10 +78,10 @@ export default {
   },
   methods: {
     route2Xiangqing(text_header, log_time, text){
-      getRoutesConfig().then(result => {
-        const routesConfig = result.data.data
-        loadRoutes(routesConfig)
-        console.log(text)
+      // getRoutesConfig().then(result => {
+      //   const routesConfig = result.data.data
+      //   loadRoutes(routesConfig)
+      //   console.log(text)
         this.$router.push({
           path: '/details/basicDetail',
           name: '查询详情页',
@@ -91,14 +91,14 @@ export default {
             text: text,
           }
         })
-      })
+      // })
     },
     route2Home() {
-      getRoutesConfig().then(result => {
-        const routesConfig = result.data.data
-        loadRoutes(routesConfig)
+      // getRoutesConfig().then(result => {
+      //   const routesConfig = result.data.data
+      //   loadRoutes(routesConfig)
         this.$router.push({path: '/dashboard/workplace',})
-      })
+      // })
     },
     deteleFunc(id) {
       detele(id).then(this.afterDelete)
