@@ -136,6 +136,7 @@ export default {
           const password = this.form.getFieldValue('password')
           // this.$router.push('/dashboard/workplace')
           login(name, password).then(this.afterLogin)
+          this.logging = false
         }
       })
     },
@@ -165,7 +166,7 @@ export default {
           this.$router.push('/dashboard/workplace')
         // })
       } else {
-        alert("ERROR")
+        alert(loginRes.message)
       }
       // if (loginRes.code >= 0) {
       //   // console.log(loginRes.data)

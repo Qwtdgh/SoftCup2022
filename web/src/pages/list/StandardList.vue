@@ -151,12 +151,12 @@
               >
                 <a-form-item>
                   <a-button type="primary" @click="onClose">
-                    Cancel
+                    取消修改
                   </a-button>
                 </a-form-item>
                 <a-form-item>
                   <a-button type="primary"  @click="onSubmit(userLists[myIndex].id, userLists[myIndex].username, userLists[myIndex].email)">
-                    Submit
+                    提交修改
                   </a-button>
                 </a-form-item>
               </div>
