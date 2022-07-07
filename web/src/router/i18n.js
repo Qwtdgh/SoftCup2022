@@ -5,13 +5,33 @@ module.exports = {
     },
     US: {
       home: {name: 'home'},
+      antdv:{
+        name: 'Ant Design Vue'
+      },
+      dashboard: {
+        name: 'Title And Abstract',
+        workplace: {name: 'File Input'},
+        query: {name: 'Text Input'}
+      },
+      management: {name: 'User Information Management'},
+      list: {
+        name: 'Historical Record',
+        card: {name: 'User Historical Record'},
+      },
+      details: {
+        name: 'Detail',
+        basicDetail: {name: 'Record Detail'},
+      },
+      team:{
+        name: 'The Development Team'
+      },
     },
     HK: {
       home: {name: '首頁'},
       dashboard: {
         name: '標題和摘要生成',
         workplace: {name: '輸入文件'},
-        analysis: {name: '輸入文本'}
+        query: {name: '輸入文本'}
       },
       form: {
         name: '表單頁',
@@ -34,13 +54,19 @@ module.exports = {
       },
       details: {
         name: '詳情頁',
-        basic: {name: '查詢詳情頁'},
+        basicDetail: {name: '查詢詳情頁'},
         advance: {name: '高級詳情頁'}
       },
       result: {
         name: '結果頁',
         success: {name: '成功'},
         error: {name: '失敗'}
+      },
+      team:{
+        name: '團隊介紹'
+      },
+      antdv:{
+        name: 'Ant Design Vue'
       },
       exception: {
         name: '異常頁',

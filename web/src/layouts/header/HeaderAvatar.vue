@@ -37,7 +37,7 @@ export default {
   },
   data() {
     let userName = Global.userName
-    console.log(userName)
+    //console.log(userName)
     return{
       userName
     }

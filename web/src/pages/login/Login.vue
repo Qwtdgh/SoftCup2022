@@ -42,7 +42,7 @@
               <a-input
                   autocomplete="autocomplete"
                   size="large"
-                  placeholder="email"
+                  placeholder="请输入邮箱地址"
                   v-decorator="['name', {rules: [{ required: true, message: '请输入账户名', whitespace: true}]}]"
               >
                 <a-icon slot="prefix" type="user"/>

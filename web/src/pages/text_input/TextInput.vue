@@ -70,7 +70,7 @@ export default {
           this.logging = true
           const title = this.form.getFieldValue('title')
           const content = this.form.getFieldValue('content')
-          console.log(title + " " + content)
+          // console.log(title + " " + content)
           this.myValid = false
           this.wait = true
           doSomething(title, content).then(this.afterDoSomethig)

@@ -23,12 +23,6 @@ export default {
     enquireScreen(isMobile => this.setDevice(isMobile))
     window.localStorage.setItem("userId",0)
     window.localStorage.setItem("userName","test")
-    // if (window.localStorage.getItem("userId") ) {
-    //   this.$store.replaceState(Object.assign({}, this.$store.state,window.localStorage.getItem("userId")))
-    // }
-    // if (window.localStorage.getItem("userName") ) {
-    //   this.$store.replaceState(Object.assign({}, this.$store.state,window.localStorage.getItem("userName")))
-    // }
     window.addEventListener("beforeunload",()=>{
       window.localStorage.setItem("userId",window.localStorage.getItem("userId"))
       window.localStorage.setItem("userName",window.localStorage.getItem("userName"))

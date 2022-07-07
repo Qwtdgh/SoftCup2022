@@ -157,7 +157,7 @@ export default {
     },
     afterGetVerCode(res){
       const registerRes = res.data
-      console.log(res)
+      //console.log(res)
       if(registerRes.success) {
         alert("已经成功发送")
       }

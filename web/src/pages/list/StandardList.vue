@@ -256,8 +256,8 @@ export default {
     afterQuery(res) {
       const registerRes = res.data
       // console.log(registerRes)
-      console.log(userLists)
-      console.log(registerRes.data)
+      //console.log(userLists)
+      //console.log(registerRes.data)
       if (registerRes.data != null) {
         if(this.userLists.length !== 0){
           for (var item1 of registerRes.data) {
@@ -293,7 +293,7 @@ export default {
     },
     afterUpdateUser(res) {
       const Res = res.data
-      console.log(res)
+      //console.log(res)
       if (Res.success) {
         this.visible = false;
         alert("更改用户信息成功")
@@ -304,7 +304,7 @@ export default {
     },
     afterDeleteUser(res){
       const Res = res.data
-      console.log(res)
+      //console.log(res)
       if(Res.success) {
         alert("删除用户信息成功")
       }

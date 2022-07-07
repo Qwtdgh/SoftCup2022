@@ -20,8 +20,8 @@ import Global from "../Global";
  * @returns {Promise<AxiosResponse<T>>}
  */
 export async function login(name, password) {
-    console.log("name:" + name + ", password" + password)
-    console.log(LOGIN)
+    //"name:" + name + ", password" + password)
+    //console.log(LOGIN)
     return request(LOGIN, METHOD.POST, {
         username: name,
         password: password
@@ -49,7 +49,7 @@ export async function detele(id) {
 }
 
 export async function doSomething(title, content) {
-    console.log("userId=" + Global.userId)
+    //console.log("userId=" + Global.userId)
     return request(DOSOMETHING, METHOD.POST, {
         userId: Global.userId,
         title: title,
