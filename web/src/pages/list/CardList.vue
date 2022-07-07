@@ -16,9 +16,9 @@
               <div style="margin-bottom: 3px" slot="title">{{item.text_header}}</div>
               <div style="margin-bottom: 3px" slot="title">{{item.log_time}}</div>
 <!--              <a-avatar class="card-avatar" slot="avatar" :src="item.avatar" size="large" />-->
-              <div class="meta-content" slot="description">{{item.text}}</div>
+              <div class="meta-content" slot="description">{{item.text_abstract}}</div>
             </a-card-meta>
-            <a slot="actions" @click="route2Xiangqing(item.text_header, item.log_time, item.text)">详情</a>
+            <a slot="actions" @click="route2Xiangqing(item.text_header, item.log_time, item.text_abstract, item.text)">详情</a>
             <a slot="actions" @click="deteleFunc(item.id)">删除</a>
           </a-card>
         </template>
@@ -77,7 +77,7 @@ export default {
     // }
   },
   methods: {
-    route2Xiangqing(text_header, log_time, text){
+    route2Xiangqing(text_header, log_time, text_abstract, text){
       // getRoutesConfig().then(result => {
       //   const routesConfig = result.data.data
       //   loadRoutes(routesConfig)
@@ -87,6 +87,7 @@ export default {
           name: '查询详情页',
           params: {
             text_header: text_header,
+            text_abstract: text_abstract,
             log_time: log_time,
             text: text,
           }
@@ -108,9 +109,22 @@ export default {
       const registerRes = res.data
       // console.log(registerRes.message)
       if(registerRes.message != null){
-        for(var item of registerRes.message){
-          // console.log(item)
-          dataSource.push(item)
+        if(dataSource.length !== 1){
+          dataSource.shift()
+          dataSource.push({
+            add: true
+          })
+          for(var item1 of registerRes.message){
+            // console.log(item)
+            dataSource.shift()
+            dataSource.push(item1)
+          }
+        }
+        else{
+          for(var item of registerRes.message){
+            // console.log(item)
+            dataSource.push(item)
+          }
         }
       }
       // console.log(dataSource)

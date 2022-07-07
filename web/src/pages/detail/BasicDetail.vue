@@ -11,6 +11,7 @@
       <a-divider style="margin-bottom: 32px"/>
       <detail-list title="查询结果">
         <detail-list-item term="生成标题">{{ text_header }}</detail-list-item>
+        <detail-list-item term="生成摘要">{{ text_abstract }}</detail-list-item>
         <!--          <detail-list-item term="联系电话">18100000001</detail-list-item>-->
         <!--          <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>-->
         <!--          <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路19号</detail-list-item>-->
@@ -35,10 +36,12 @@ export default {
     let text
     let text_header
     let log_time
+    let text_abstract
     return {
       text,
       text_header,
       log_time,
+      text_abstract,
     }
   },
   created() {
@@ -47,11 +50,13 @@ export default {
       // getRoutesConfig().then(result => {
       //   const routesConfig = result.data.data
       //   loadRoutes(routesConfig)
+      // this.$emit('close', "/details/basicDetail")
       this.$router.replace({path: '/list/card',})
       // this.$router.push({path: '/list/card',})
       // })
     }
     this.text_header = this.$route.params.text_header
+    this.text_abstract = this.$route.params.text_abstract
     this.log_time = this.$route.params.log_time
     this.text = this.$route.params.text
     // console.log(this.$route.params)

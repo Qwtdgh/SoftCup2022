@@ -16,7 +16,7 @@
       </a-tooltip>
       <a-tab-pane v-for="page in pageList" :key="page.path">
         <div slot="tab" class="tab" @contextmenu="e => onContextmenu(page.path, e)">
-          <a-icon @click="onRefresh(page)" :class="['icon-sync', {'hide': page.path !== active && !page.loading}]" :type="page.loading ? 'loading' : 'sync'" />
+<!--          <a-icon @click="onRefresh(page)" :class="['icon-sync', {'hide': page.path !== active && !page.loading}]" :type="page.loading ? 'loading' : 'sync'" />-->
           <div class="title" @click="onTabClick(page.path)" >{{pageName(page)}}</div>
           <a-icon v-if="!page.unclose" @click="onClose(page.path)" class="icon-close" type="close"/>
         </div>
@@ -86,10 +86,13 @@
         }
       },
       onClose(key) {
+        // console.log(key)
         this.$emit('close', key)
       },
       onRefresh(page) {
         this.$emit('refresh', page.path, page)
+        location.reload()
+        // this.$forceUpdate()
       },
       onContextmenu(pageKey, e) {
         this.$emit('contextmenu', pageKey, e)

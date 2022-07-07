@@ -129,13 +129,13 @@ export default {
     ...mapMutations('account', ['setUser', 'setPermissions', 'setRoles']),
     onSubmit(e) {
       e.preventDefault()
-      this.form.validateFields((err) => {
+      this.form.validateFields(async (err) => {
         if (!err) {
           this.logging = true
           const name = this.form.getFieldValue('name')
           const password = this.form.getFieldValue('password')
           // this.$router.push('/dashboard/workplace')
-          login(name, password).then(this.afterLogin)
+          await login(name, password).then(this.afterLogin)
           this.logging = false
         }
       })

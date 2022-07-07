@@ -21,7 +21,7 @@ import Global from "../Global";
  */
 export async function login(name, password) {
     //"name:" + name + ", password" + password)
-    //console.log(LOGIN)
+    // console.log(LOGIN)
     return request(LOGIN, METHOD.POST, {
         username: name,
         password: password
@@ -49,7 +49,7 @@ export async function detele(id) {
 }
 
 export async function doSomething(title, content) {
-    //console.log("userId=" + Global.userId)
+    // console.log(DOSOMETHING)
     return request(DOSOMETHING, METHOD.POST, {
         userId: Global.userId,
         title: title,
