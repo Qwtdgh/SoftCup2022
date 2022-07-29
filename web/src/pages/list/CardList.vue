@@ -114,14 +114,14 @@ export default {
           dataSource.push({
             add: true
           })
-          for(var item1 of registerRes.message){
+          for(var item1 of registerRes.message.reverse()){
             // console.log(item)
             dataSource.shift()
             dataSource.push(item1)
           }
         }
         else{
-          for(var item of registerRes.message){
+          for(var item of registerRes.message.reverse()){
             // console.log(item)
             dataSource.push(item)
           }
