@@ -54,13 +54,34 @@ export default {
       this.$router.replace({path: '/list/card',})
       // this.$router.push({path: '/list/card',})
       // })
+    } else {
+      this.text_header = this.$route.params.text_header
+      this.text_abstract = this.$route.params.text_abstract
+      this.log_time = this.$route.params.log_time
+      this.text = this.$route.params.text
     }
-    this.text_header = this.$route.params.text_header
-    this.text_abstract = this.$route.params.text_abstract
-    this.log_time = this.$route.params.log_time
-    this.text = this.$route.params.text
+    // alert("debug")
+    // this.$forceUpdate()
     // console.log(this.$route.params)
-  }
+  },
+  watch: {
+    '$route'() {
+      if (this.$route.params.text === undefined && this.$route.path === '/details/basicDetail') {
+        alert("请先选择您要查看详细信息的查询")
+        this.$router.replace({path: '/list/card',})
+      }
+      this.getData();
+      this.$forceUpdate();
+    }
+  },
+  methods: {
+    getData() {
+      this.text_header = this.$route.params.text_header
+      this.text_abstract = this.$route.params.text_abstract
+      this.log_time = this.$route.params.log_time
+      this.text = this.$route.params.text
+    }
+  },
 }
 </script>
 
