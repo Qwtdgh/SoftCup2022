@@ -5,7 +5,7 @@
         <span style="float: left; font-weight: bold; font-size: 40px">团队介绍</span>
       </a-row>
       <a-row style="margin-top: 20px">
-        <span style="float: left; font-size: 20px">智慧创作全都队旨在为热爱文学创作的学者提供文学创作参考，激发用户的灵感。四位成员均来自北京航空航天大学计算机学院，获得过北京市蓝桥杯“二等奖”。</span>
+        <span style="float: left; font-size: 20px">智慧创作全都队旨在为热爱文学创作的学者提供文学创作参考，激发用户的灵感。五位成员均来自北京航空航天大学计算机学院。</span>
       </a-row>
     </a-row>
     <a-row style="margin-top: 45px">
@@ -15,8 +15,12 @@
             <img :src="getImgUrl(props.i)"/>
           </a>
           <div>
-            <img :src="qlh" alt="组长跑路至今未归" height="500"/>
-            <p align="center">曲乐皓 组长 模型训练</p>
+            <img :src="lzj" alt="组长跑路至今未归" height="500"/>
+            <p align="center">林子杰 组长 前端开发</p>
+          </div>
+          <div>
+            <img :src="qlh" alt="模型训练跑路至今未归" height="500"/>
+            <p align="center">曲乐皓 模型训练</p>
           </div>
           <div>
             <img :src="pbq" alt="模型训练跑路至今未归" height="500"/>
@@ -37,6 +41,7 @@
   </div>
 </template>
 <script>
+import lzj from '../../assets/img/lzj.png'
 import qlh from '../../assets/img/qlh.jpg'
 import pbq from '../../assets/img/pbq.jpg'
 import boy from '../../assets/img/boy.jpg'
@@ -48,6 +53,7 @@ export default {
   data() {
     return {
       baseUrl,
+      lzj,
       qlh,
       pbq,
       boy,
@@ -57,18 +63,20 @@ export default {
   methods: {
     getImgUrl(i) {
       if (i === 0) {
-        return `${qlh}`;
+        return `${lzj}`
       } else if (i === 1) {
-        return `${pbq}`;
+        return `${qlh}`;
       } else if (i === 2) {
+        return `${pbq}`;
+      } else if (i === 3) {
         return `${boy}`;
       }
       return `${zzk}`;
     },
   },
-  computed:{
-    autoplaySpeed(){
-      return  2000
+  computed: {
+    autoplaySpeed() {
+      return 2000
     }
   },
 };

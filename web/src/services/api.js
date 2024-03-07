@@ -1,5 +1,6 @@
 //跨域代理前缀
-const API_PROXY_PREFIX='http://106.54.191.30:80/api'
+// const API_PROXY_PREFIX='http://106.54.191.30:80/api'
+const API_PROXY_PREFIX='http://81.70.35.148/api'
 const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API_BASE_URL : API_PROXY_PREFIX
 // const BASE_URL = process.env.VUE_APP_API_BASE_URL
 // const REAL_URL = process.env.VUE_APP_API_REAL_URL
