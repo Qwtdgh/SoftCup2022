@@ -9,7 +9,8 @@ import {enquireScreen} from './utils/util'
 import {mapState, mapMutations} from 'vuex'
 import themeUtil from '@/utils/themeUtil';
 import {getI18nKey} from '@/utils/routerUtil'
-
+// yarn run serve报错请先运行如下：
+// export NODE_OPTIONS=--openssl-legacy-provider
 export default {
   name: 'App',
   data() {

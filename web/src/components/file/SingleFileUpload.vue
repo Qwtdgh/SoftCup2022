@@ -8,7 +8,7 @@
         :data="{
           userId: this.userId
         }"
-        action="http://81.70.35.148:80/api/uploadFile/"
+        action="https://81.70.35.148:80/api/uploadFile/"
         @change="handleChange"
     >
       <p class="ant-upload-drag-icon">
