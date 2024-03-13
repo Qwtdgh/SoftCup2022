@@ -8,7 +8,7 @@
         :data="{
           userId: this.userId
         }"
-        action="https://81.70.35.148:80/api/uploadFile/"
+        action="https://platform-intelli.site/api/uploadFile/"
         @change="handleChange"
     >
       <p class="ant-upload-drag-icon">

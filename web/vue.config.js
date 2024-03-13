@@ -37,7 +37,7 @@ const assetsCDN = {
 module.exports = {
   devServer: {
     proxy: {
-      'https://81.70.35.148:80/api': { //此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致
+      'https://platform-intelli.site/api': { //此处要与 /services/api.js 中的 API_PROXY_PREFIX 值保持一致
         target: process.env.VUE_APP_API_BASE_URL,
         changeOrigin: true,
         pathRewrite: {
